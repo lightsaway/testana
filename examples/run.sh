@@ -2,6 +2,7 @@
 
 #docker-compose -f ./elk.compose up -d --force-recreate
 
+#just looper
 grab_results() {
     BUILD_NAME=$1
     PATH=$2
