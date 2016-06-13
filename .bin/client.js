@@ -1,5 +1,5 @@
-#! /usr/bin/env node
-'use strict'
+#!/usr/bin/env node
+'use strict';
 const Testana = require('../lib/testana');
 const meow = require('meow');
 
@@ -9,7 +9,7 @@ let DEFAULT_PATTERNS = ['**/**/TEST*.xml'],
     DEFAULT_COLLECTOR = 'junit',
     DEFAULT_BRANCH = 'master',
     DEFAULT_BUILD = 'build-default',
-    DEFAULT_BUILD_NR = '1',
+    DEFAULT_BUILD_NR = 1,
     DEFAULT_TYPE = 'unit-tests',
     DEFAULT_TAGS = [];
 
@@ -18,7 +18,7 @@ let DEFAULT_PATTERNS = ['**/**/TEST*.xml'],
  * @param opts
  */
 const extractMeta = (opts) => {
-    const META_KEYS = ['build', 'buildNr', 'type', 'tags'];
+    const META_KEYS = ['component', 'buildNr', 'type', 'tags','branch'];
     const meta = {};
     META_KEYS.forEach(k => {
         meta[k] = opts[k]
@@ -26,7 +26,7 @@ const extractMeta = (opts) => {
     return meta;
 };
 
-var cli = meow({
+const cli = meow({
     description: 'Testana sends collected test results to elastic search',
     help: [
         'Usage: testana [options]',
@@ -40,7 +40,7 @@ var cli = meow({
         '-c, --collector            collector type (see avaliable collectors)',
         '-b, --branch               name of branch where build has happend',
         '-n, --build                name of component that has been built',
-        '-nr, --buildNr             build number'
+        '-nr, --build-nr            build number'
     ]
 }, {
     alias: {
@@ -49,17 +49,18 @@ var cli = meow({
         p: 'patterns',
         t: 'tags',
         c: 'collectors',
-        n: 'build',
+        n: 'component',
         nr: 'buildNr',
         b:'branch',
-        e: 'elastic-url'
+        e: 'elastic-url',
+        tp: 'type'
     },
     default: {
         elasticUrl: DEFAULT_ElASTIC_URL,
         logLevel: DEFAULT_LOG_LEVEL,
         patterns: DEFAULT_PATTERNS,
         collector: DEFAULT_COLLECTOR,
-        build: DEFAULT_BUILD,
+        component: DEFAULT_BUILD,
         buildNr: DEFAULT_BUILD_NR,
         type: DEFAULT_TYPE,
         branch: DEFAULT_BRANCH,
@@ -77,7 +78,9 @@ if (cli.flags.tags !== DEFAULT_TAGS) {
 
 cli.flags.meta = extractMeta(cli.flags);
 
-new Testana(cli.flags).push().then((response) => {
+const testana = new Testana(cli.flags);
+
+testana.push().then((response) => {
         const log = require('../lib/utils/logger')();
         log.info(response.status);
         log.info(response.statusText);

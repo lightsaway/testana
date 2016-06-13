@@ -6,7 +6,7 @@ const fetch = require('node-fetch');
 fetchMock.useNonGlobalFetch(fetch);
 const mockery = require('mockery');
 
-describe('Testana send functionality', () => {
+describe('Testana http function', () => {
     const elasticUrl = 'http://elastic.com';
     const buildNr = 1;
     const component = 'foo';
@@ -28,9 +28,7 @@ describe('Testana send functionality', () => {
     });
 
     it('should push metrics', () => {
-
         const Testana = require('../lib/testana');
-
         let testana = new Testana({
             elasticUrl: elasticUrl,
             collector: "junit",

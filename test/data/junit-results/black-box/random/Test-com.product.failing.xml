@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite namePor="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="1.309" tests="15" errors="0" skipped="1" failures="1">
+    <testcase name="testActionWithLockedContext" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.031"/>
+    <testcase name="testAction" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.026"/>
+    <testcase name="testActionWithChildrenAndExtensionsAndOverridenContext" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.15"/>
+    <testcase name="testActionWithWithEnterpriseCatalogExtensions" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.106"/>
+    <testcase name="testActionWithExistingGroup" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.024"/>
+    <testcase name="testActionWithGroup" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.026"/>
+    <testcase name="testActionWithOverriddenContext" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.028">
+        <failure message="Retrieved portal should be present" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Retrieved portal should be present
+            at junit.framework.Assert.fail(Assert.java:57)
+            at junit.framework.Assert.assertTrue(Assert.java:22)
+            at junit.framework.Assert.assertNull(Assert.java:277)
+            at com.foo.process.impl.ActionBusinessProcessImplTestIT.testActionWithOverriddenContext(ActionBusinessProcessImplTestIT.java:108)
+        </failure>
+    </testcase>
+    <testcase name="testActionExisting" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.047"/>
+    <testcase name="testXmlInput" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0">
+        <skipped message="Fix in BACKLOG-6694"/>
+    </testcase>
+    <testcase name="testActionOverExistingClearsDeletedPageItems" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.154"/>
+    <testcase name="testActionContainer_creation" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.132"/>
+    <testcase name="testActionWithChildren" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.109"/>
+    <testcase name="testActionContainer_update" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.197"/>
+    <testcase name="testActionWithChildrenAndExtensions" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.257"/>
+    <testcase name="keepTestsFromFailingInIDE" classname="com.foo.process.impl.ActionBusinessProcessImplTestIT" time="0.022"/>
+</testsuite>

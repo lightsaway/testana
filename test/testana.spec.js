@@ -9,11 +9,15 @@ describe('Testana functionality', () => {
     });
 
     it('fail if no collector provided', () => {
-        assert.throws(() => new Testana({elasticURL: "some"}), Error);
+        assert.throws(() => new Testana({elasticUrl: "some"}), Error);
     });
 
     it('fail if wrong collector provided', () => {
-        assert.throws(() => new Testana({elasticURL: "some", collector: "wrong"}), Error);
+        assert.throws(() => new Testana({elasticUrl: "some", collector: "wrong"}), Error);
+    });
+
+    it('fail if wrong collector provided', () => {
+        assert.throws(() => new Testana({elasticUrl: "some", collector: "wrong"}), Error);
     });
 
     it('should decorate metrics with optional meta information', () => {
@@ -25,12 +29,5 @@ describe('Testana functionality', () => {
         assert.equal(data.foo, "bar");
         assert.equal(data.bar, "foo");
     });
-
-    it('should push metrics', () => {
-        const fetchMock = require('fetch-mock');
-        const fetch = require('node-fetch');
-        const mockery = require('mockery');
-        fetchMock.useNonGlobalFetch(fetch);
-    })
 
 });

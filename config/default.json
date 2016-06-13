@@ -36,7 +36,7 @@
             "findPattern": "./test/**/*.js",
             "coverage": {
                 // % of code to cover with tests
-                "enforceThreshold": 90,
+                "enforceThreshold": 80,
 
                 // Include coverage results for files not touched at all by
                 // any of our Mocha tests

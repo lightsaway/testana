@@ -34,4 +34,23 @@ describe('collecting junit test results', function(){
         assert.throws( () => collector({}), Error );
     });
 
+    it('should collect failed tests', function () {
+        let file = './data/junit-results/black-box/random/Test-com.product.failing.xml';
+        let filePath = path.resolve(__dirname, file);
+        let result = collector([filePath]);
+        assert.equal(result.failureStackTraces.length, 1 ,'should have 1 stacktrace');
+        assert.equal(result.failedTests.length, 1 ,'should have 1 failed test');
+        assert(result.failureStackTraces[0].startsWith(result.failedTests[0]) === true);
+    })
+
+
+    it('should collect errored tests', function () {
+        let file = './data/junit-results/black-box/service-a/TEST-serviceA.JsonValidatorTest.xml';
+        let filePath = path.resolve(__dirname, file);
+        let result = collector([filePath]);
+        assert.equal(result.erroredStackTraces.length, 1 ,'should have 1 stacktrace');
+        assert.equal(result.erroredTests.length, 1 ,'should have 1 failed test');
+        assert(result.erroredStackTraces[0].startsWith(result.erroredTests[0]) === true);
+    })
+
 });
